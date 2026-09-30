@@ -331,7 +331,11 @@ function initApp() {
 }
 
 if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', initApp);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
 }
 
 if (typeof module !== 'undefined' && module.exports) {
