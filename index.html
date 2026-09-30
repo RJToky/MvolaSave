@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Économisez sur vos frais MVola en répartissant intelligemment vos transferts et retraits.">
+  <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <title>MvolaSave</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <h1>MvolaSave</h1>
+      <p>Économisez sur vos frais MVola.</p>
+    </header>
+
+    <div class="modes" role="group" aria-label="Choix du service">
+      <button type="button" data-mode="transfer" aria-pressed="true">💸 Transfert</button>
+      <button type="button" data-mode="withdrawal" aria-pressed="false">💵 Retrait</button>
+    </div>
+
+    <form id="form" class="card" novalidate>
+      <label id="question" for="amount">Combien voulez-vous transférer&nbsp;?</label>
+      <div class="field">
+        <input id="amount" type="text" inputmode="numeric" autocomplete="off"
+               placeholder="1 000 000" aria-describedby="error hint">
+        <span class="suffix" aria-hidden="true">Ar</span>
+      </div>
+      <p id="hint" class="hint">De 100 Ar à 20 000 000 Ar</p>
+      <p id="error" class="error" role="alert" hidden></p>
+      <button type="submit" class="primary">Optimiser</button>
+    </form>
+
+    <section id="result" class="card result" aria-live="polite" hidden>
+      <p id="r-amount" class="result-amount"></p>
+
+      <dl class="summary">
+        <div><dt id="r-normal-label">Frais normaux</dt><dd id="r-normal"></dd></div>
+        <div><dt>Frais optimisés</dt><dd id="r-optimized"></dd></div>
+        <div id="r-savings-row" class="savings"><dt>Économie</dt><dd id="r-savings"></dd></div>
+      </dl>
+
+      <p id="r-note" class="note" hidden></p>
+
+      <h2>Répartition recommandée</h2>
+      <ol id="r-operations" class="operations"></ol>
+      <p class="total"><span>Total <small id="r-count"></small></span><strong id="r-total"></strong></p>
+    </section>
+
+    <details class="tariffs">
+      <summary>Voir les tarifs</summary>
+      <table>
+        <caption id="tariffs-title"></caption>
+        <thead><tr><th scope="col">Montant (Ar)</th><th scope="col">Frais</th></tr></thead>
+        <tbody id="tariffs-body"></tbody>
+      </table>
+    </details>
+
+    <footer class="footer">
+      Tarifs indicatifs. Calcul effectué dans votre navigateur.
+    </footer>
+  </main>
+</body>
+</html>
