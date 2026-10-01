@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fenêtre affichée au lancement, avant la première image Flutter. -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:windowBackground">@color/app_background</item>
+    </style>
+    <!-- Fenêtre derrière l'interface Flutter une fois lancée. -->
+    <style name="NormalTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:windowBackground">@color/app_background</item>
+    </style>
+</resources>
