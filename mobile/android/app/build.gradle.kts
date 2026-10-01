@@ -28,6 +28,14 @@ android {
         versionName = flutter.versionName
     }
 
+    // Bibliothèques natives compressées dans l'APK : fichier à télécharger
+    // nettement plus léger (elles sont décompressées une fois à l'installation).
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+
     buildTypes {
         release {
             // Signé avec la clé de debug : l'APK s'installe directement
