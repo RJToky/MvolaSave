@@ -9,6 +9,9 @@ import 'tariffs.dart';
 const Duration _fast = Duration(milliseconds: 220);
 const Curve _curve = Curves.easeOutCubic;
 
+/// Durée du glissement du sélecteur Transfert / Retrait : courte et réactive.
+const Duration _switch = Duration(milliseconds: 150);
+
 /// Largeur à partir de laquelle le résultat s'affiche à côté du formulaire.
 const double _twoColumnWidth = 760;
 
@@ -237,7 +240,7 @@ class _ModeSelector extends StatelessWidget {
       child: Stack(
         children: [
           AnimatedAlign(
-            duration: _fast,
+            duration: _switch,
             curve: _curve,
             alignment: mode == Mode.transfer ? Alignment.centerLeft : Alignment.centerRight,
             child: FractionallySizedBox(
@@ -262,6 +265,8 @@ class _ModeSelector extends StatelessWidget {
             child: Material(
               type: MaterialType.transparency,
               child: Row(
+                // Chaque bouton occupe toute la hauteur : le fond pressé aussi.
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   _ModeButton(
                     label: Mode.transfer.label,
@@ -309,7 +314,7 @@ class _ModeButton extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(innerRadius),
           child: TweenAnimationBuilder<Color?>(
-            duration: _fast,
+            duration: _switch,
             tween: ColorTween(end: selected ? p.text : p.muted),
             builder: (context, color, _) => Row(
               mainAxisAlignment: MainAxisAlignment.center,
